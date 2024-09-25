@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:quadb_assignment/features/home/domain/entities/movie_entity/movie_entity.dart';
-
+import 'package:html/parser.dart' as html_parser;
 import 'show.dart';
 
 class MovieModel {
@@ -35,10 +35,14 @@ class MovieModel {
   String toJson() => json.encode(toMap());
 }
 extension MovieModelMapper on MovieModel {
+     String cleanSummary(String htmlString) {
+      final document = html_parser.parse(htmlString);
+      return document.body?.text ?? '';
+    }
   MovieEntity toEntity() {
     return MovieEntity(
       title: show?.name ?? '',
-      summary: show?.summary ?? '',
+      summary: cleanSummary(show?.summary ?? ''),
       rating: show?.rating?.average ?? 0.0,
       originalImage: show?.image?.original ?? '',
       mediumImage: show?.image?.medium ?? '',
