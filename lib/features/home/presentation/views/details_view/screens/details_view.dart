@@ -24,7 +24,7 @@ class DetailsView extends StatelessWidget {
                 child: AspectRatio(
                 aspectRatio: 0.7, 
                 child: CachedNetworkImage(
-                  imageUrl: movie.originalImage,
+                  imageUrl: Uri.parse(movie.originalImage).toString(),
                   placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.fill,

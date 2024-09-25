@@ -13,14 +13,14 @@ class NavigationView extends StatelessWidget {
       create: (context) => NavigationCubit(),
       child: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
-          final PageController pageController = PageController(initialPage: state is Home ? 0 : 1);
+          
 
           return Scaffold(
             body: PageView(
               onPageChanged: (index) {
                 context.read<NavigationCubit>().navigate(index);
               },
-              controller: pageController,
+              controller:  context.read<NavigationCubit>().pageController,
               children: const [
                 HomeView(),
                 SearchView(),
@@ -32,7 +32,7 @@ class NavigationView extends StatelessWidget {
               unselectedItemColor: Colors.grey,
               onTap: (index) {
                 context.read<NavigationCubit>().navigate(index);
-                pageController.jumpToPage(index); // Navigate to the selected page
+               
               },
               currentIndex: state is Home ? 0 : 1,
               items: const [
