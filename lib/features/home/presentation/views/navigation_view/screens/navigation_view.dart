@@ -13,14 +13,26 @@ class NavigationView extends StatelessWidget {
       create: (context) => NavigationCubit(),
       child: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
+          final PageController pageController = PageController(initialPage: state is Home ? 0 : 1);
+
           return Scaffold(
-            body: state is Home ? const HomeView() : const SearchView(),
+            body: PageView(
+              onPageChanged: (index) {
+                context.read<NavigationCubit>().navigate(index);
+              },
+              controller: pageController,
+              children: const [
+                HomeView(),
+                SearchView(),
+              ],
+            ),
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: Colors.black,
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.grey,
               onTap: (index) {
                 context.read<NavigationCubit>().navigate(index);
+                pageController.jumpToPage(index); // Navigate to the selected page
               },
               currentIndex: state is Home ? 0 : 1,
               items: const [
