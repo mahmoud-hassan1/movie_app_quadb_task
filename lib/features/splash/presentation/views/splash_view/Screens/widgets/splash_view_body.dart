@@ -9,7 +9,7 @@ class SplashViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Lottie.asset('assets/lottie/Splash.json',repeat: false),
+      child: Lottie.asset('assets/lottie/Splash.json', repeat: false),
     );
   }
 }
