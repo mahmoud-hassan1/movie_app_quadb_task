@@ -4,14 +4,21 @@ import 'package:flutter/material.dart';
 part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
-  final PageController pageController = PageController(initialPage:  0 );
+  final PageController pageController = PageController(initialPage: 0);
   NavigationCubit() : super(Home());
-  void navigate(index){
-    pageController.jumpToPage(index);
-    if(index==0){
+  void swipe(index) {
+    if (index == 0) {
       emit(Home());
+    } else {
+      emit(Search());
     }
-    else{
+  }
+
+  void navigate(index) {
+    pageController.jumpToPage(index);
+    if (index == 0) {
+      emit(Home());
+    } else {
       emit(Search());
     }
   }

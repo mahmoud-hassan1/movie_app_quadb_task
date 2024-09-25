@@ -18,7 +18,7 @@ class NavigationView extends StatelessWidget {
           return Scaffold(
             body: PageView(
               onPageChanged: (index) {
-                context.read<NavigationCubit>().navigate(index);
+                context.read<NavigationCubit>().swipe(index);
               },
               controller:  context.read<NavigationCubit>().pageController,
               children: const [
