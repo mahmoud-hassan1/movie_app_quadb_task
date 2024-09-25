@@ -14,7 +14,7 @@ class SearchTextField extends StatelessWidget {
   final TextEditingController _searchController;
   final double height;
   onSubmit(context){
-      BlocProvider.of<SearchCubit>(context).fetchSearchData(_searchController.text??"");
+      BlocProvider.of<SearchCubit>(context).fetchSearchData(_searchController.text);
   }
   @override
   Widget build(BuildContext context) {

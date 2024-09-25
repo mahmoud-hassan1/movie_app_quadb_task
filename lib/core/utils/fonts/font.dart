@@ -16,8 +16,8 @@ abstract class FontStyles{
   fontSize: getResponsiveFontSize(context,fontSize: 20),
  ) ;
   static TextStyle kFontSize30 (BuildContext context)=>TextStyle(
-  color: Colors.black,
-  fontWeight: FontWeight.w700,
+  color: Colors.white,
+  fontWeight: FontWeight.w800,
   fontSize: getResponsiveFontSize(context,fontSize: 30),
  ) ;
   static TextStyle kFontSize60 (BuildContext context)=>TextStyle(

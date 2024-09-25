@@ -14,7 +14,7 @@ class NavigationView extends StatelessWidget {
       child: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
           return Scaffold(
-            body: state is Home ? HomeView() : SearchView(),
+            body: state is Home ? const HomeView() : const SearchView(),
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: Colors.black,
               selectedItemColor: Colors.white,
